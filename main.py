@@ -20,19 +20,18 @@ def script(request):
 @app.route('/data')
 def get_data(request):
    # Simular datos de presión
-   def generate_pressure_data():
-       return [random.randint(0,100) for _ in range(100)]
-       
+   def generate_pressure_data(min, max):
+       return [random.randint(min,max) for _ in range(100)]
    data = {
        'left': {
-           'talon': generate_pressure_data(),
-           'medio': generate_pressure_data(),
-           'punta': generate_pressure_data()
+           'talon': generate_pressure_data(20,30),
+           'medio': generate_pressure_data(20,25), 
+           'punta': generate_pressure_data(45,50)
        },
        'right': {
-           'talon': generate_pressure_data(),
-           'medio': generate_pressure_data(), 
-           'punta': generate_pressure_data()
+           'talon': generate_pressure_data(25,32),
+           'medio': generate_pressure_data(20,30), 
+           'punta': generate_pressure_data(50,55)
        }
    }
    return json.dumps(data)
