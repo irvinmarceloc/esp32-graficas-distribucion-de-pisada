@@ -1,5 +1,5 @@
 # main.py
-from microdot import Microdot
+from lib.microdot import Microdot
 import json
 import random
 
